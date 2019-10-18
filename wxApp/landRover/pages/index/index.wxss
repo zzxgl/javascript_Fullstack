@@ -1,0 +1,17 @@
+swiper{
+  height: 100vh;
+}
+.content{
+  text-align: center;
+  margin-top: 3rem;
+}
+image{
+  width:100%;
+}
+button{
+  width:7rem;
+  display: inline-block;
+  margin-top: 4rem;
+  font-size: 15px;
+  font-weight: bold;
+}
