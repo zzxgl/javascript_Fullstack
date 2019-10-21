@@ -17,9 +17,9 @@
 }
 
 .cart-list .cart-thumb{
-  /* position: absolute;
+  position: absolute;
   top: 20rpx;
-  left: 85rpx; */
+  left: 85rpx;
   width: 185rpx;
   height: 185rpx;
 }
