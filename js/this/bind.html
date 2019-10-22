@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = {
+            user: '蜗牛',
+            fn: function (a,b) {
+                console.log(this.user)
+                console.log(a + b)
+            }
+        }
+        var b = a.fn  
+        var c = b.bind(a) //b被调用并且作用域指向a
+        c(1,2)      // bind 返回值为一个函数 
+    </script>
+</body>
+
+</html>

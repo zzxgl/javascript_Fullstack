@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var a = 123  
+        // a 是全局作用域 全局对象是window
+        // 在全局上面被调用 this 指向 window
+        var obj = { //隐式绑定  同名
+            a:2,
+            foo
+        }
+        function foo(){
+            console.log(this)
+        }
+        var b = obj.foo  //foo被引用但没有被调用 
+        b.call(this)             //隐式绑定丢失   b作为方法被调用，这时this指向window 
+        // obj 上面调用了foo()
+    </script>
+</body>
+</html>
