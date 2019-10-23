@@ -1,0 +1,12 @@
+{
+  "name": "pic_list",
+  "version": "1.0.0",
+  "description": "- restful web\r  一切皆资源 \r  DOM+css+js\r  URL => Universal Resource Location 统一资源定位符\r  http://www.taobao.com/shop/1/good/2 明确表达该资源的具体含义 \r  npm init -y",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch db.json --port 1314"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
