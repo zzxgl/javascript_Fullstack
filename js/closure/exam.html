@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style: none;
+        }
+
+        li:nth-child(n) {
+            background-color: #363636;
+        }
+
+        li:nth-child(2n) {
+            background-color: #888888;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+    </ul>
+    <!-- 原生js addEventListener为每个添加一个click时间 输出li的顺序(下标) -->
+    <script>
+        function addClick() {
+            var lis = document.getElementsByTagName('li');
+            for (var i = 0; i < lis.length; i++) {
+                (function (j) {
+                    lis[j].addEventListener("click", function () {
+                        console.log(j)
+                    })
+                })(i)
+            }
+        }
+        addClick()
+    </script>
+</body>
+
+</html>

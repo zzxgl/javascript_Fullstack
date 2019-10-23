@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // for(var i = 0;i<10;i++){
+        //     setTimeout(()=>{
+        //         document.write(i+'')
+        //     },0)
+        // }
+        function test(){
+            var arr = []
+            for(var i =0;i<10;i++){
+                // arr[i] =(function(){
+                //     document.write(i+'')
+                // })()
+                (function(j){
+                    // var j = 0     形参j 实参i
+                    //j =1,2,3 ...    j 不会被覆盖掉，会保存0-9的每个值
+                    arr[j] =function (){
+                        document.write(j+'')
+                    }
+                })(i)
+                // 引用 赋值给arr
+                // arr[i]()
+            }
+            // arr =['function(){
+                    // document.write(i+'')
+                // }'.........]
+            return arr
+        }
+        var myArr = test()
+        // myArr[0]()
+        // myArr[1]()
+        // myArr[2]()
+        // myArr[3]()
+        // myArr[4]()
+        // myArr[5]()
+        // myArr[6]()
+        // myArr[7]()
+        // myArr[8]()
+        // myArr[9]() 
+        // i 已经在for 里面
+        for(var j =0;j<10;j++){
+            myArr[j]()
+        }
+    </script>
+</body>
+</html>
