@@ -10,20 +10,19 @@
 
 <body>
     <script>
-        function betyLength() {
-            var str ="hello world"
-            var finalLen = 0
+        function betyLength(string) {
             var uc = []
             var obj = {
                 strUC: function () {
+                    var str = string 
                     for (var i = 0; i < str.length; i++) {
-                        // s=str.charCodeAt(i);
                         uc.push(str.charCodeAt(i))
-                        console.log(uc);
+                        // console.log(uc);
                     }
                 },
                 betyLen: function () {
                    var sUC = uc 
+                   var finalLen = 0
                     for (var j = 0; j < sUC.length; j++) {
                         if (sUC[j] <= 255 && sUC[j] > 0) {
                             finalLen += 2
@@ -31,12 +30,12 @@
                             finalLen += 1
                         }
                     }
-                    console.log(finalLen)
+                    console.log("该字符串的字节长度为"+finalLen)
                 }
             }
             return obj
         }
-        var mybety = betyLength()
+        var mybety = betyLength("hello world你好")
         mybety.strUC()
         mybety.betyLen()
     </script>
