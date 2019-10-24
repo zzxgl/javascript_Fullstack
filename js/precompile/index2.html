@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //GO 全局
+        // GO = {
+        //      global:undefined=>100
+        //      fn: function fn(){
+        // console.log(global)
+        // }
+        // }
+        // 
+        // var global = 100
+        // function fn(){
+        //     console.log(global)
+        // }
+        // AO={
+        //  
+        // }
+        // 
+
+        global = 100
+        function fn(){
+            console.log(global)
+            global = 200
+            console.log(global)
+            var global = 300
+            console.log(global)
+        }
+        fn()
+        var global;
+        console.log(global)
+        // GO={
+        //     global:undefined,
+        //     fn:function fn(){..}
+        // }
+        // AO={
+        //     global:undefined=>200=>300
+        // }
+    </script>
+</body>
+</html>
