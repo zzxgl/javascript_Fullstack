@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function betyLength() {
+            var str ="hello world"
+            var finalLen = 0
+            var uc = []
+            var obj = {
+                strUC: function () {
+                    for (var i = 0; i < str.length; i++) {
+                        // s=str.charCodeAt(i);
+                        uc.push(str.charCodeAt(i))
+                        console.log(uc);
+                    }
+                },
+                betyLen: function () {
+                   var sUC = uc 
+                    for (var j = 0; j < sUC.length; j++) {
+                        if (sUC[j] <= 255 && sUC[j] > 0) {
+                            finalLen += 2
+                        } else if (sUC[j] > 255 && sUC[j] < 65535) {
+                            finalLen += 1
+                        }
+                    }
+                    console.log(finalLen)
+                }
+            }
+            return obj
+        }
+        var mybety = betyLength()
+        mybety.strUC()
+        mybety.betyLen()
+    </script>
+</body>
+
+</html>
