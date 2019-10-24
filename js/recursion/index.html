@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // n! n的阶乘
+        // function mul(n){
+        //     var num =1
+        //     for(let i =1;i<=n;i++){
+        //         num = num*i
+        //     }
+        //     console.log(num)
+        // }
+        // mul(3)
+
+
+
+        function factorial(n) {
+            if(n==1||n==0){
+              return 1
+            }
+            return n * factorial(n-1)
+        }
+        console.log(factorial(3))
+
+    </script>
+</body>
+
+</html>
