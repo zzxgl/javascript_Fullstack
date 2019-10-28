@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function test(){
+        //     setTimeout(()=>{
+        //         console.log("猛哥")
+        //     },500)
+        // }
+        // function test2(){
+        //     console.log('猛哥相亲')
+        // }
+        // test()
+        // test2()
+
+        //输出 猛哥相亲 猛哥
+
+
+
+
+
+        //回调 解决异步
+        // var name=''
+        // function test(){
+        //     setTimeout(()=>{
+        //     console.log("猛哥")
+        //     name="猛哥"
+        //     xq()
+        //     },500)
+        // }
+        // function xq(){
+        //     console.log(name+'相亲')
+        // }
+        // test()
+
+
+
+
+
+        // promise  promise方法自带两个参数 resolve(赋予成功) reject（赋予失败）
+        //.then  test().then(xq)    .then要成功执行，promise必须要reslove
+        var name = ''
+        function test() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("猛哥")
+                    name = "猛哥"
+                    resolve('ok')
+                    // reject('error')
+                }, 500)
+            })
+
+        }
+        function xq() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(name + '相亲')
+                    resolve('彩礼')
+                }, 1000)
+            })
+        }
+        function marry() {
+            console.log(name + '结婚了！')
+        }
+        // test()
+        //     .then((res) => {
+        //         console.log(res)
+        //         xq()
+        //             .then((res) => {
+        //                 console.log(res)
+        //                 marry()
+        //             })
+        //     })
+
+        //等价于
+
+        // test()
+        //     .then(xq)
+        //     .then(marry)
+
+        Promise.all([test(),xq()]).then((value)=>{
+            console.log(value,'--------------')
+            marry()
+        })
+
+        Promise.race([test(),xq()]).then((value)=>{
+            console.log(value,'--------------')
+            marry()
+        })
+    </script>
+</body>
+</html>
