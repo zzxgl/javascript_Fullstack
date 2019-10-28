@@ -10,34 +10,46 @@
 
 <body>
     <script>
-        function betyLength(string) {
-            var uc = []
-            var obj = {
-                strUC: function () {
-                    var str = string 
-                    for (var i = 0; i < str.length; i++) {
-                        uc.push(str.charCodeAt(i))
-                        // console.log(uc);
-                    }
-                },
-                betyLen: function () {
-                   var sUC = uc 
-                   var finalLen = 0
-                    for (var j = 0; j < sUC.length; j++) {
-                        if (sUC[j] <= 255 && sUC[j] > 0) {
-                            finalLen += 2
-                        } else if (sUC[j] > 255 && sUC[j] < 65535) {
-                            finalLen += 1
-                        }
-                    }
-                    console.log("该字符串的字节长度为"+finalLen)
+        // function betyLength(string) {
+        //     var uc = []
+        //     var obj = {
+        //         strUC: function () {
+        //             var str = string 
+        //             for (var i = 0; i < str.length; i++) {
+        //                 uc.push(str.charCodeAt(i))
+        //                 // console.log(uc);
+        //             }
+        //         },
+        //         betyLen: function () {
+        //            var sUC = uc 
+        //            var finalLen = 0
+        //             for (var j = 0; j < sUC.length; j++) {
+        //                 if (sUC[j] <= 255 && sUC[j] > 0) {
+        //                     finalLen ++
+        //                 } else if (sUC[j] > 255 && sUC[j] < 65535) {
+        //                     finalLen += 2
+        //                 }
+        //             }
+        //             console.log("该字符串的字节长度为"+finalLen)
+        //         }
+        //     }
+        //     return obj
+        // }
+        // var mybety = betyLength("hello world你好")
+        // mybety.strUC()
+        // mybety.betyLen()
+        function retByteslen(target) {
+            var count,len;
+            count = len = target.length
+            for(var i = 0;i<len;i++){
+                if(target.charCodeAt(i)>255)
+                {
+                    count++
                 }
             }
-            return obj
+            console.log(count)
         }
-        var mybety = betyLength("hello world你好")
-        mybety.strUC()
-        mybety.betyLen()
+        retByteslen("hello world你好")
     </script>
 </body>
 

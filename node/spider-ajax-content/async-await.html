@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //异步 回调 promise
+    //fetch浏览器自带的请求方法，返回promise
+        fetch('./id.json')
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            return fetch('./detail.json')
+        })
+        .then(detail => detail.json())
+        .then(data=>{
+            console.log('detail',data)
+        })
+
+
+    //async 只要用了这个关键词，就能在函数内部使用await await后面接promise
+    //异步 终极解决异步的方式
+        async function getDetail(){
+            //fetch 异步
+            let id = await fetch('./id.json');
+            // 转为json也是异步的
+            id = await id.json();
+            let detail = await fetch('./detail.json')
+            detail =await detail.json();
+            console.log('await',detail)
+        }
+        getDetail()
+    </script>
+</body>
+</html>
