@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国旗头像合成</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <input type="file" id="fileInput" />
+        <canvas id="preview" width="290" height="290"></canvas>
+    </div>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+        // event 每个都有   事件的信息
+        fileInput.addEventListener('change', function (event) { 
+            let file = event.target.files[0];
+            // 读文件
+            let fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                const imgFile = e.target.result;
+                draw(imgFile);
+            }
+            fileReader.readAsDataURL(file);
+
+        })
+        function draw(imgFile) {
+            const ctx = preview.getContext('2d');
+            ctx.width =290;
+            ctx.height =290;
+            //创建一个img标签 就有一个Image对象
+            // createlement('img')
+            const avatar = new Image();
+
+            avatar.onload = function() {
+                //  ctx.drawImage(imgFile, 0, 0, 290, 290);
+                ctx.drawImage(avatar, 0, 0, 290, 290);
+
+                const icon = new Image();
+                icon.onload = function() {
+                    ctx.drawImage(icon, 0, 0, 290, 290);
+                }
+                icon.src = './TIM图片20191009160440.png'
+            }
+            avatar.src = imgFile;
+           
+        }
+    </script>
+</body>
+
+</html>
