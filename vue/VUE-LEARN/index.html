@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-model双向绑定 数据同步
+        <input type="text" v-model="test">
+        <div class="msg">{{test}}</div> -->
+
+
+
+        <!-- v-if v-else DOM结构在页面上不会展示-->
+        <!-- <div class="wrap">
+            <div class="wrap1" v-if="ha">哈哈哈哈</div>
+            <div class="wrap2" v-else>哈哈哈哈哈哈</div>
+        </div> -->
+
+
+
+
+        <!-- v-show DOM在页面上会展示 -->
+        <!-- <div class="wrap">
+            <div class="wrap1" v-show='ha'>哈哈哈哈</div>
+            <div class="wrap2">哈哈哈哈哈哈</div>
+        </div> -->
+
+
+        <!-- v-for循环 -->
+        <!-- <div class="wrap">
+            <ul>
+                <li v-for="list in newsList" >{{list.title}}--{{list.date}}</li>
+            </ul>
+        </div> -->
+
+
+        <!-- v-html  解析html标签-->
+        <!-- <div class="wrap">
+            <div class="content" v-html="content"></div>
+        </div> -->
+
+
+        <!-- v-text  -->
+        <!-- <div class="wrap">
+            <div class="content" v-text="content"></div>
+        </div> -->
+
+        <!-- v-on:click    @click  v-on绑定事件-->
+        <!-- <div class="wrap">
+            <div class="wrap1" v-show="ha">哈哈哈哈</div>
+            <div class="wrap2" v-on:click="handle">哈哈哈哈哈哈</div>
+            <div class="wrap2" @click="handle">哈哈哈哈哈哈</div>
+        </div> -->
+
+
+        <!-- v-bind  绑定属性 v-bind:  => :   -->
+        <div class="wrap">
+            <div class="className" v-bind:class="isActive ? 'active':''">v-bind</div>
+            <div class="wn":class="hh">蜗牛</div>
+            <div class="wn":class="{good:className}">蜗牛</div>
+            <div class="wn":class="[classA,classB]">蜗牛</div>
+        </div>
+
+
+    </div>
+    <script>
+        var app = new Vue({
+            // element  作用于#app
+            el: '#app',
+            // 数据源
+            data() {
+                return {
+                    message: 'hello world',
+                    test: '',
+                    ha: false,
+                    newsList: [
+                        { title: '全国各地的梯子遭到我国长城防火墙的禁用', date: '2019/5/31' },
+                        { title: '韩国瑜：准备承担2020年重担，让鬼混的民进党下台', date: '2019/6/1' },
+                        { title: '冠心病“救命药”单片涨价近11倍 药企：换了包装', date: '2019/6/2' },
+                        { title: '长春一天集齐雷电冰雹暴雨：有路段积水漂车，部分航班取消', date: '2019/6/3' }
+                    ],
+                    content: '张张',
+                    hh:"hhhh",
+                    isActive:false,
+                    className:true,
+                    classA:'A',
+                    classB:'B'
+                }
+            },
+            methods: {
+                handle(){
+                    console.log('hh')
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
