@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Symbol 解决变量重复的问题
+    let a = Symbol()
+    let b = Symbol()
+    // console.log(a===b)
+    var obj = {
+        name:'name',
+        [b]:'name1',
+        [a]:'Symbol'
+    }
+    // obj[a]
+    // console.log(obj[name])
+    // 对象 key支持字符串和symbol
+    // symbol是不可枚举的
+    // for(let key in obj){
+    //     console.log(key)
+    // }
+    console.log(Object.getOwnPropertySymbols(obj))
+    </script>
+</body>
+</html>
