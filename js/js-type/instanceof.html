@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // instanceof 判断类和实例的关系 判断实例是不是由这个类构造出来的
+        // * instanceof Object  true
+        function Foo(){}
+        var a = new Foo()
+        console.log(a instanceof(Foo))
+        console.log(null instanceof (Object)) //false
+        console.log([] instanceof (Array))
+        console.log([] instanceof (Object))
+        console.log(undefined instanceof (Object))
+        console.log(function () { } instanceof (Object))
+    </script>
+</body>
+
+</html>

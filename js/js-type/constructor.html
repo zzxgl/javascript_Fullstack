@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = []
+        console.log(a.constructor === Array)
+        var b ="aaa"
+        console.log(b.constructor === String)
+        var c = null //空值 判断报错
+        var d = undefined //声明未赋值 判断报错
+        function Foo(){} //constructor 会被改掉
+        var a = new Foo()
+        console.log(a.constructor ===Array)
+    </script>
+</body>
+</html>

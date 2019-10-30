@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // console.log(Object.prototype.toString.call(111))
+        // console.log(Object.prototype.toString.apply(''))
+        // console.log(Object.prototype.toString.apply(null))
+        // console.log(Object.prototype.toString.apply([]))
+        // console.log(Object.prototype.toString.apply(undefined))
+        // console.log(Object.prototype.toString.apply(function () { }))
+        // console.log(Object.prototype.toString.apply(Symbol()))
+        // console.log(Object.prototype.toString.apply(new Date()))
+        // console.log(Object.prototype.toString.apply(/[0-9]/))
+        class A {
+            toString1() {
+
+            }
+        }
+        class B extends A {
+
+        }
+        var b = new B()
+        // console.log(b)
+        var f = [1,3]
+        var fn =function(){}
+        function func(){
+
+        }
+        var obj = {
+            abc:3
+        }
+        // obj.__proto__ = Bar.prototype;
+        // console.log(obj.toFoo())
+        console.log(obj.__proto__)
+        // console.log(f)
+        // f.__proto__
+        // f.__proto__.__proto === Object.prototype
+        console.log(f.__proto__ === Array.prototype)
+        console.log(f.__proto__.__proto__ === Object.prototype)
+        // console.log(f.toString())
+        // console.log(Object.prototype.toString.call(f))
+        // console.log(fn.toString())
+        // console.log(Object.prototype.toString.call(fn))
+        // console.log(func.toString())
+        // console.log(Object.prototype.toString.call(func))
+
+
+        //万物皆对象
+        // 数据类型都继承自 Object
+        // Object 上面有tostring
+        // 每个数据类型,通过原型链也继承到了Object上面的toString，所以每个上面也有个 toString
+        function Bar(){
+            this.abc = 10
+        }
+        function Bar2(){
+            this.abc = 2
+        }
+        Bar.prototype.toFoo = function(){
+           return this.abc*100
+        }
+        var bar = new Bar()
+        console.log(bar.toFoo())
+        console.log(
+            Bar.prototype.toFoo.call(Bar2())
+            )
+        
+    </script>
+
+</body>
+
+</html>
