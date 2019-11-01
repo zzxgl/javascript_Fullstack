@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <p>4</p>
+    </ul>
+    <script>
+    // 点击li 输出li 里面的内容
+        // const liNode = document.querySelectorAll('li');
+        // for(let i = 0;i<liNode.length;i++){
+        //     liNode[i].addEventListener('click',function(){
+        //           console.log(liNode[i].innerHTML)
+        //     })
+        // }
+        const ulNode = document.querySelector('ul');
+        ulNode.addEventListener('click',(e)=>{
+            console.log(e.target)
+            console.log(e.currentTarget)
+            if(e.target.nodeName == "LI"){
+                console.log(e.target.innerHTML)
+            }
+        })
+    </script>
+</body>
+</html>
