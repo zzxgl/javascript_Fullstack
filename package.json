@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "puppeteer": "^2.0.0"
+  },
+  "devDependencies": {
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
   }
 }
