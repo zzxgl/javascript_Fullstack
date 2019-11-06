@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box-wrapper {
+            width: 100%;
+            /* font-size: 0; */
+            overflow: hidden;
+            /* 触发BFC 格式化BFC */
+            /* position: absolute; */
+            margin-top: 50px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            /* display: inline-block; */
+            /* html换行带来的间隙 font-szie = 0 解决间隙*/
+            line-height: 100px;
+            /* 垂直居中 大小设置与高度一样 */
+            text-align: center;
+            margin-top: 20xp;
+            margin-bottom: 30px;
+        }
+        .box-child{
+            margin-top: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- bfc block formating context -->
+    <div class="box-wrapper clearfix">
+        <div class="box">
+            <div class="box-chlid">1</div>
+        <!-- <div class="box">2</div>
+        <div class="box">3</div> -->
+    </div>
+    <!-- <div class="text">hello world</div> -->
+</body>
+
+</html>

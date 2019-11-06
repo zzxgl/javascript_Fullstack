@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box-wrapper {
+            width: 100%;
+            /* font-size: 0; */
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            /* display: inline-block; */
+            /* html换行带来的间隙 font-szie = 0 解决间隙*/
+            float: left;
+            line-height: 100px;
+            /* 垂直居中 大小设置与高度一样 */
+            text-align: center;
+        }
+
+        .clearfix::after {
+            content: '';
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-wrapper clearfix">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <!-- <div class="clearfix"></div> -->
+    </div>
+    <div class="text">hello world</div>
+</body>
+
+</html>
