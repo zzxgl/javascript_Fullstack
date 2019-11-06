@@ -9,7 +9,7 @@ import './common/stylus/index.styl'
 // 非官方的插件，引入完都要Vue.use()
 // Vue.use(axios)
 Vue.prototype.$http = axios
-Vue.config.productionTip = false 
+Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
