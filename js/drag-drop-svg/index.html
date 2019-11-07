@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table th, table td{
+        border: 1px solid;
+        text-align: center;
+        font-size: 19px;
+        height: 2em;
+        /* 自己有fontsize则相对于自己的fontsize设置大小，没有fontsize则相对于父容器的fontsize */
+    }
+    </style>
+</head>
+
+<body>
+    <a href="">aaa</a>
+    <div class="container">
+        <span>类型：</span>
+        <ul class="canDrag">
+            <li draggable="true">optimal</li>
+            <li draggable="true">good</li>
+            <li draggable="true">medium</li>
+            <li draggable="true">badly</li>
+        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>WEEKS</th>
+                    <th>MON</th>
+                    <th>TUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        // html加载完之后，执行函数{}里面的代码
+        // window.onload = function (){}
+        // window.addEventListener('domcontentloaded', () => {})
+        $(function () {
+            $('.canDrag li').bind('dragstart', function(event){
+                // 不使用封装后的event 使用原生js的event
+                // console.log(event)
+                event = event.originalEvent;
+                event.target.style.opacity = .5;
+                event.dataTransfer.setData('text',$(event.target).html())
+            })
+            $('.canDrag li').bind('dragend', function(event){
+                // 不使用jquery封装后的event 使用原生js的event
+                // console.log(event)
+                event = event.originalEvent;
+                event.target.style.opacity = 1;
+            })
+            // 拖进来节点的瞬间触发
+            $('table td').bind('dragenter',function(event){
+                event = event.originalEvent;
+                event.target.style.backgroundColor = '#fdfdfd'
+            })
+            $('table td').bind('dragleave',function(event){
+                event = event.originalEvent;
+                event.target.style.backgroundColor=''
+            })
+            // 拖在节点上面一直触发
+            $('table td').bind('dragover',function(event){
+                event.originalEvent.preventDefault();
+            })
+            $('table td').bind('drop',function(event){
+                event = event.originalEvent;
+                const text = event.dataTransfer.getData('text');
+                // 谁触发了这个事件，event.target就是谁
+                $(event.target).html(text);
+            })
+        })
+    </script>
+</body>
+
+</html>
