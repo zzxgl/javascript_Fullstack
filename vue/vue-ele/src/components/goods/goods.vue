@@ -32,21 +32,32 @@
                         <span class="new">￥{{food.price}}</span>
                         <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                       </div>
+                      <div class="cartcontrol-wrapper">
+                        <!-- 父组件拿到子组件里面的方法 -->
+                        <v-cartcontrol :food="food" @add="addFood"></v-cartcontrol>
+                        <!-- 购物车 + 号功能 不受其他的结构影响 -->
+                      </div>
                     </div>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
-          <v-shopCart></v-shopCart>
       </div>
+      <v-shopCart :selectFoods = "selectFoods" :deliveryPrice= "seller.deliveryPrice" :minPrice = "seller.minPrice">
+      </v-shopCart>
   </div>
 </template>
 
 <script>
 import shopCart from '@/components/shopCart/shopCart.vue'
+import cartcontrol from '@/components/cartcontrol/cartcontrol.vue'
 import BScroll from 'better-scroll'
 export default {
+  props: {
+    seller: {
+    }
+  },
   name: 'Goods',
   data () {
     return {
@@ -70,7 +81,8 @@ export default {
     })
   },
   components: {
-    'v-shopCart': shopCart
+    'v-shopCart': shopCart,
+    'v-cartcontrol': cartcontrol
   },
   computed: {
     currentIndex () {
@@ -84,6 +96,19 @@ export default {
         }
       }
       return 0
+    },
+    selectFoods () {
+      let foods = []
+      for (let good of this.goods) {
+        if (good.foods) {
+          for (let food of good.foods) {
+            if (food.count) {
+              foods.push(food)
+            }
+          }
+        }
+      }
+      return foods
     }
   },
   methods: {
@@ -122,6 +147,8 @@ export default {
         this.listHeight.push(height)
       }
       console.log(this.listHeight)
+    },
+    addFood () {
     }
   }
 }

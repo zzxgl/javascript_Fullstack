@@ -14,7 +14,8 @@
         <router-link to="/seller">商家</router-link>
       </div>
     </div>
-    <router-view />
+    <router-view :seller="seller"/>
+    <!-- 通过路由入口来传递 可以传值通过路由入口展示的路由组件-->
   </div>
 </template>
 
