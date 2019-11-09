@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Button {
+            constructor(color) {
+                this.color = color
+            }
+        }    
+        class BuyItNow extends Button{
+            constructor(color) {
+                // super 父级构造函数
+                super(color)
+                this.innerHTML = '购买'
+                let button = document.createElement('button')
+                button.innerHTML = this.innerHTML
+                button.style.color = this.color
+                document.body.appendChild(button)
+            }
+            click() {
+                console.log('Buy It Now!')
+            }
+        }
+        // class 是语法糖 本质上还是function
+        typeof BuyItNow //function
+        console.log(new BuyItNow('red'))
+        let myclick = new BuyItNow('blue')
+        myclick.click()
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 寄生组合式继承 这也是es6 extends 采用的继承
+        function Btn(color){
+            this.color = color
+        }
+        Btn.prototype.click = function (params) {
+            console.log('click')
+        }
+        function BIN(color) {
+            // 继承属性 this指向BIN  
+            Btn.call(this,color)
+            // 相当于 super(color)
+        }      
+        // Object.create 进行浅复制
+        // 其中一种继承方法 把父类的原型对象一个一个复制给BIN
+        BIN.prototype = Object.create(Btn.prototype)
+        var b1 = new BIN('red')
+        // b1.click()
+        // console.log(b1) 
+        console.log(Btn.prototype)
+        BIN.prototype.constructor = BIN
+        console.log(BIN.prototype)
+    </script>
+</body>
+</html>

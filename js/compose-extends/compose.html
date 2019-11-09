@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore.js"></script>
+    <script>
+    // 函数式编程 函数是一等公民 函数也可以当作变量来传递
+    // function req(err,success){
+    //     setTimeout(() => {
+    //         let rmd = Math.random();
+    //         if (rmd < 0.5){
+    //             // console.log(rmd)
+    //             success({code:200})
+    //         } else {
+    //             // console.log(rmd)
+    //             err({code:500})
+    //         }
+    //     }, 1000);
+    // }
+    // req((res) => {
+    //     console.log(res.code)
+    // }, (res) => {
+    //     console.log(res)
+    // })
+
+
+    // 函数式编程 提倡单独的功能拆为函数
+    // 函数式 通过什么组合单一的功能
+    function setColor(btn) {
+        btn.style.color = 'red'
+        return btn
+    }
+    function SetInnerHtml(btn) {
+        btn.innerHTML = '立即购买'
+        return btn
+    }
+    function append(btn) {
+        document.body.appendChild(btn)
+        return btn
+    }
+    let btn =document.createElement('button')
+    // setColor(btn)
+    // SetInnerHtml(btn)
+    // append(btn) 
+
+
+    // 单独的功能 组合在一起
+    // let nFn = _.compose( append,SetInnerHtml, setColor)
+    // let btn1 = document.createElement('button');
+    // nFn(btn1)
+
+    // let fn1 = str => str+='123'
+    // let fn2 = str => str+='456'
+    // let fn3 = _.compose(fn1,fn2)
+    // console.log(_.compose(fn1,fn2))
+    // console.log(fn3('--------'))
+
+
+    // 自定义一个组合
+    function compose1(fn1, fn2, fn3) {
+        // 1 compose1 运行的时候执行
+        return function (params) {
+            // 2 nFn
+            // fn1(params)
+            // fn2(params)
+            // fn3(params)
+            fn1(fn2(fn3(params)))
+        }
+    }
+    let com = compose1(append,SetInnerHtml, setColor)
+    com(btn)
+    function add(a,b){
+        c = a+b
+    }
+    function chu(c,d){
+        e = c/d
+    }
+    function compose2(){
+        
+    }
+
+
+    // 升级版
+    function myCompose(...fns){
+        console.log(fns)
+        return function (arg){
+            let res = fns.pop()(arg)
+            while (fns.length){
+                let fn = fns.pop()
+                res = fn(res)
+            }
+            return res            
+        }
+    }
+    var fff =myCompose(append,SetInnerHtml,setColor)
+    fff(document.createElement('div'))
+    </script>
+</body>
+</html>
