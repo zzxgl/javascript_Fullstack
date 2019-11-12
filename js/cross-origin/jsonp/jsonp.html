@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getBooK(res) {
+            console.log('得到请求结果', res)
+        }
+    </script>
+    <!-- script 加载回来的东西被当作js执行 
+    getBook()后端把要传递的值 塞到() -->
+    <script src="http://localhost:3000/api/getBook"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script> -->
+    <!-- <script>
+        var obj = {
+            a:1
+        }
+        console.log(JSON.stringify(obj))
+        console.log(obj.b)
+
+
+        setTimeout(() => {
+            obj.b = () => 123
+        }, 1);
+    </script> -->
+    <script>
+      getBooK({"bookName":"php"})
+    </script>
+</body>
+</html>

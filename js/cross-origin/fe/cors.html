@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- enctype 把要请求的内容以什么格式发送   -->
+    <!-- url-encode: url 编码 ？a=1&b2-->
+    <!-- text/plain 纯文本 -->
+    <!-- form-data 文件上传-->
+    <form action="" method="" enctype=""></form>
+    <script>
+        // fetch 浏览器自带请求方式 默认GET
+        // 请求一个接口 拿到数据
+    // 构造一个请求头
+    let requestHeaders = new Headers()
+    // 在请求头里面添加一个字段X-auth
+    requestHeaders.append('X-auth','hhhhhhh')
+    requestHeaders.append('content-type','application/json')
+    fetch('http://localhost:3000/api/getBook',{
+        method: 'POST',
+        data: { page: 1 },
+        headers: requestHeaders
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })    
+    </script>
+</body>
+</html>
