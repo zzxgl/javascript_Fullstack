@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 头部 -->
-    <!-- 父组件向子组件传递数据  -->
+    <!-- 父组件向子组件传递数据 header -->
     <v-header :seller = "seller"></v-header>
     <div class="tab border-1px">
       <div class="tab-item">
@@ -15,6 +15,7 @@
       </div>
     </div>
     <router-view :seller="seller"/>
+    <!-- 所有的页面都是APP.vue 的路由组件 goods就能拿到seller这个数据-->
     <!-- 通过路由入口来传递 可以传值通过路由入口展示的路由组件-->
   </div>
 </template>

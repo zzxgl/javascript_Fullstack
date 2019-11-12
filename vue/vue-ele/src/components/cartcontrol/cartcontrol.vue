@@ -21,7 +21,7 @@ export default {
   methods: {
     addCart (event) {
       if (!this.food.count) {
-        //   修改或者增加数据源里面的数据
+        //   修改或者增加数据源里面的数据 给每个菜品里面增加一个count字段
         this.$set(this.food, 'count', 1)
       } else {
         this.food.count++

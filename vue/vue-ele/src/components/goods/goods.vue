@@ -44,6 +44,8 @@
             </ul>
           </div>
       </div>
+      <!-- 从APP.vue接收到数据 -->
+      <!-- shopCart.vue的父组件 传递值给shopCart.vue -->
       <v-shopCart :selectFoods = "selectFoods" :deliveryPrice= "seller.deliveryPrice" :minPrice = "seller.minPrice">
       </v-shopCart>
   </div>
@@ -97,6 +99,7 @@ export default {
       }
       return 0
     },
+    // 存已经勾选的菜品
     selectFoods () {
       let foods = []
       for (let good of this.goods) {
