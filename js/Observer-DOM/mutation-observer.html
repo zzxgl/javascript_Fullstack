@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="kolor-kolor" style="background-color: rgba(120,120,1,1)">hhhhhh</div>
+    <script>
+        // 创建一个观察者
+        // 回调函数
+        var observer = new MutationObserver((mutationList) => {
+            // console.log(mutationList);
+            if(mutationList[0].type == 'attributes') {
+                console.log('attribute changes')
+                let color = document.getElementById('kolor-kolor').style.backgroundColor;
+                document.querySelectorAll('#kolor-options a').forEach((e) => {
+                    if(e.style.backgroundColor == color) {
+                        e.click();
+                    }
+                })
+            }
+        })
+        const targetNode = document.getElementById('kolor-kolor');
+        observer.observe(targetNode, {
+            attributes: true
+        })
+        setTimeout(() => {
+            targetNode.style.backgroundColor = 'rgba(0,0,0,0)'
+        }, 2000);
+    </script>
+</body>
+</html>
