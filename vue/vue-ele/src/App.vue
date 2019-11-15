@@ -23,7 +23,6 @@
 <script>
 // 引入组件  注册组件 调用组件  提高复用
 import header from '@/components/header/header.vue'
-
 export default {
   name: 'App',
   data () {

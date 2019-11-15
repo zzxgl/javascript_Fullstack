@@ -33,7 +33,7 @@
                         <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                       </div>
                       <div class="cartcontrol-wrapper">
-                        <!-- 父组件拿到子组件里面的方法 -->
+                        <!-- 父组件拿到子组件里面的方法 接收到cartcontrol 抛出的addCart 取名为addFood-->
                         <v-cartcontrol :food="food" @add="addFood"></v-cartcontrol>
                         <!-- 购物车 + 号功能 不受其他的结构影响 -->
                       </div>
@@ -46,7 +46,7 @@
       </div>
       <!-- 从APP.vue接收到数据 -->
       <!-- shopCart.vue的父组件 传递值给shopCart.vue -->
-      <v-shopCart :selectFoods = "selectFoods" :deliveryPrice= "seller.deliveryPrice" :minPrice = "seller.minPrice">
+      <v-shopCart ref="shopCart" :selectFoods = "selectFoods" :deliveryPrice= "seller.deliveryPrice" :minPrice = "seller.minPrice">
       </v-shopCart>
   </div>
 </template>
@@ -151,7 +151,18 @@ export default {
       }
       console.log(this.listHeight)
     },
-    addFood () {
+    // this.$emit('add', event.target)  addFood参数(target) 为cartcontrol发散出来add事件发生的DOM节点(event.target)
+    addFood (target) {
+      // console.log(target)
+      this._drop(target)
+    },
+    _drop (target) {
+      // 体验优化 异步执行下落动画
+      // 保证{}在页面渲染之后执行
+      this.$nextTick(() => {
+        this.$refs.shopCart.drop(target)
+        // 父组件直接调用子组件里面的方法获取子组件的DOM节点
+        })
     }
   }
 }
