@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节流</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #444;
+            font-size: 30px;
+        }
+        #container1 {
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: #fff;
+            background-color: #222;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- mousemove resize  频繁触发的事件 节流 降低调用的频率 -->
+    <div id="container"></div>
+    <div id="container1"></div>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+    <script>
+        const container = document.getElementById('container');
+        const container1 = document.getElementById('container1');
+        let init = 0;
+        let init1 = 0;
+        let previous = 0;
+        function buyitnow() {
+            let now = new Date().getTime();
+            if (now - previous >= 1000) {
+                container.innerHTML = init ++;
+                previous = now;
+            }
+        }
+        
+        //  一组持续触发的事件 设置触发的时间间隔
+        container.onmousemove = buyitnow;
+
+
+
+        function addCart () {
+            container1.innerHTML = init1 ++;
+        }
+        let throttleAdd = myThrottle(addCart,1000)
+        container1.onmousemove = throttleAdd;
+        // 函数式编程是过程抽象
+        // 高阶函数 ： 输入是函数 返回也是函数  体现的也是过程抽象
+        // _.throttle(func,time); lodash
+        // 对一个行为进行节流 
+        function myThrottle(func, wait) {
+            return function() {
+                let now = new Date().getTime();;
+                if (now - previous >= wait) {
+                    func();
+                    previous = now;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
