@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .scrollContainer {
+            width: 200px;
+            height: 600px;
+            border: 1px solid #000;
+            overflow-y: scroll;
+        }
+
+        .targetBox {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin-top: 900px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scrollContainer">
+        <div class="targetBox"></div>
+    </div>
+    <script>
+        var intersectionObs = new IntersectionObserver((entries) => {
+            // console.log('entries', entries)
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('entry', entry)
+                }
+
+            })
+
+        },
+        // 第二个参数  配置
+        {
+            threshold: [0.3,0.5,1],    //阀值 默认值为零 当比列为0.3， 0.5 ，1 时分别执行一次回调函数 
+            rootMargin: '0px 0px 30px 0px'   // 下边框往上挪30px
+        })
+        // 就算没有发生交叉 也会触发一次回调函数
+        intersectionObs.observe(document.querySelector('.targetBox'))
+    </script>
+</body>
+
+</html>
