@@ -1,7 +1,7 @@
 <template>
   <div class="child">
       <h3>子组件</h3>
-      <div>子组件要发送的消息{{msg}}</div>
+      <div>子组件要发送的消息:{{msg}}</div>
       <button @click="sendMsg">SENDMESSAGE</button>
   </div>
 </template>
