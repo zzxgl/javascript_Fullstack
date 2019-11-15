@@ -13,7 +13,19 @@ export default new Router({
     {
       path: '/City',
       name: 'City',
-      component: () => import('@/page/city/City')
+      component: () => import('@/page/city/City'),
+      children: [
+        {
+          path: '/city/CityIn',
+          name: 'CityIn',
+          component: () => import('@/page/city/CityIn')
+        },
+        {
+          path: '/city/CityOut',
+          name: 'Cityout',
+          component: () => import('@/page/city/CityOut')
+        }
+      ]
     }
   ]
 })
