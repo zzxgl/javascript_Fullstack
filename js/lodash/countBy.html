@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+    <script>
+        //   以向下取整的方式统计数组 生成一个对象 key是通过某种操作完的结果 value是结果出现的次数
+        // console.log(_.countBy([5.4,5.6,5.1,7,7.2], Math.floor))
+        function myCountBy(arr, method) {
+          let obj = {}
+          arr.forEach(item => {
+            let newItem = method(item)
+            // console.log(newItem) 
+            if (!obj[newItem]) {
+              obj[newItem] = 1
+            }
+            else {
+              obj[newItem]++
+            }
+          })
+          return obj
+        }
+        console.log(myCountBy([5.4, 5.6, 5.1, 7, 7.2], Math.round))
+        // map filter reduce  具有函数式编程风格的API
+
+        // [5.4, 5.6, 5.1, 7, 7.2]
+        function myCountBy1(arr, func) {
+          return arr.reduce((pre, next) => {
+            console.log(pre,next)
+            //   如果有第二个参数  pre===第二个参数 
+            let res = func(next);
+            // 第二次及以后循环 pre 是上一级的返回值
+            if(pre[res] !== undefined) {
+              pre[res] ++
+            } else {
+              pre[res] = 1
+            }
+            return pre
+          },{})
+        }
+        // [5.4, 5.6, 5.1, 7, 7.9].reduce
+        console.log(myCountBy1([5.4, 5.6, 5.1, 7, 7.2], Math.floor))
+    </script>
+</body>
+
+</html>
