@@ -1,0 +1,16 @@
+{
+  "name": "webSocke-tchatroom",
+  "version": "1.0.0",
+  "description": "http  webSocket\r - http: client ->>>> server\r - webSocket: client -> server\r              server -> client\r   全双工双向通信",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.2.0"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <div id="app">
+     <input type="text" name="" id="" placeholder="请输入用户名" v-model="userName">
+     <input type="text" name="" id="" placeholder="聊天" v-model="msg">
+     <button @click="handleSend">确定发送</button>
+     <ul>
+         <li v-for="(item,i) in msgLists" :key="i" >{{item.userName}}：{{ item.msg }}</li>
+     </ul>
+   </div> 
+   <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+   <script>
+     new Vue({
+       el: '#app',
+       data() {
+         return {
+           userName: '',
+           msg:'',
+           msgLists:[]
+         }
+       },
+       wss:null,
+       mounted() {
+        //   创建一个WebSocket服务
+         this.wss = new WebSocket('ws://localhost:3000')
+        //   收到ws服务端消息时
+         this.wss.onmessage = (msg) => {
+           console.log('msg',msg)
+           let item = JSON.parse(msg.data)
+           this.msgLists.push(item)
+         }   
+       },
+       methods: {
+        handleSend() {
+            //  将要发送的信息格式修改为字符串
+          let msg = JSON.stringify({
+            userName: this.userName,
+            msg: this.msg
+          })
+          //    向服务端发送msg
+          this.wss.send(msg)
+        }  
+       },
+     })
+   </script>
+</body>
+</html>
