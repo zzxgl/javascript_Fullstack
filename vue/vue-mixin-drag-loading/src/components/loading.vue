@@ -1,0 +1,23 @@
+<template>
+  <div>
+    <el-button @click="open">open</el-button>
+    <el-button @click="close"> close</el-button>
+    <!-- 添加一个v-loading属性 -->
+    <el-table v-loading="visible"  style="width: 100%">
+      <el-table-column prop="date" label="日期" width="180"></el-table-column>
+      <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+      <el-table-column prop="address" label="地址"></el-table-column>
+    </el-table>
+  </div>
+</template>
+
+<script>
+import mixin from './visible'
+export default {
+  mixins: [mixin]  
+}
+</script>
+
+<style>
+
+</style>
