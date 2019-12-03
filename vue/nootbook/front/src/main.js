@@ -8,6 +8,7 @@ import 'vant/lib/index.css'
 import axios from 'axios'
 import  'amfe-flexible'
 
+// use 将（）挂载到Vue的原型链上 this.$()
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel)
 
 Vue.prototype.$http = axios
@@ -16,8 +17,8 @@ Vue.prototype.$http = axios
 Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
-  console.log(to)
-  console.log(from)
+  // console.log(to)
+  // console.log(from)
   // next() 
   next()
 })
