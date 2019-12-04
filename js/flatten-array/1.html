@@ -30,6 +30,7 @@
     // reduce, map, filter
     function flattenArr1(arr) {
       return arr.reduce((pre, next) => {
+        console.log('pre:',pre, 'next:',next)
         if(Array.isArray(next)) {
           return pre.concat(flattenArr1(next))
         } else {
@@ -39,6 +40,9 @@
       },[])
     }
     console.log(flattenArr1([1,[2,[3,4]]]))
-  </script> 
+    // reduce 累加器
+    let arr3 = [1,2,3,4,5,6]
+    console.log(arr3.reduce((pre,next) => pre+next))
+    </script>
 </body>
 </html>
