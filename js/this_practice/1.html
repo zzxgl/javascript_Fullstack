@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    var obj = {
+      name1: '123',
+      fn: function() {
+        console.log(this.name1)
+      }
+    }
+    obj.fn()  // 123  this指向obj 作为对象的方法被调用时this指向的是对象本身
+    var p = obj.fn  //没有调用只是一个简单的赋值语句  p 是在全局上定义的变量 
+    console.log(p) //function() {console.log(this.name1)}
+    p() // undefined this指向window  
+  </script> 
+</body>
+</html>
