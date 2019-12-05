@@ -31,9 +31,9 @@ export default {
   },
   methods: {
     register () {
-      if (this.nickname.trim() === '' || this.username.trim() === '' ||this.userpwd.trim() === '') {
+      if (this.nickname.trim() === '' || this.username.trim() === '' || this.userpwd.trim() === '') {
         this.$toast('昵称,账号或者密码不能为空')
-      }
+      } else{
       this.$http({
         method: 'post',
         url:'http://localhost:3000/users/userRegister',
@@ -43,11 +43,20 @@ export default {
           userpwd: this.userpwd.trim()
         }
       }).then((res) =>{
-        
+        console.log(res)
+        if(res.data.code === '200') {
+          this.$toast(res.data.mess)
+          var s = setTimeout(()=>{
+            this.$router.push({path:'/StarLogin'})
+          },1000)
+        } else {
+          this.$toast(res.data.mess)
+        }
       })
+      }
     },
     login () {
-      
+      this.$router.push({path:'/StarLogin'})
     }
   },
 }
@@ -64,6 +73,7 @@ input {
   background: #fff;
   padding: 0 1.28rem;
   overflow: hidden;
+  box-sizing: border-box;
   h1 {
     margin-top: 1.12rem;
     height: 0.693333rem;
