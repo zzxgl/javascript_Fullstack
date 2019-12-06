@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //    Person类上面的 prototype属性指向 Person.prototype
+    //    Person.prototype 上面的constructor属性 指向Person
+    //    P.__proto__ = Person.prototype
+     function Person() {
+       this.age = 30
+     }
+     Person.prototype.say = function() {
+        console.log(this.age)
+     }
+     var p = new Person()
+     console.log(p)
+    //  console.log(p.__proto__ === Person.prototype)  //true
+    //  console.log(Person.prototype.constructor === Person)  //true
+    // 所有对象的默认原型都是Object的实例
+    //  console.log(Person.prototype.__proto__ === Object.prototype)  //true 
+    function Student() {
+      
+    }
+    // Student.prototype.__proto__ = Person.prototype
+    Student.prototype = Object.create(Person.prototype)
+  
+   </script> 
+</body>
+</html>

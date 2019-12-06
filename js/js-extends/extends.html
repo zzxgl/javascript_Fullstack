@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person() {
+            this.age = 30
+        }
+        Person.prototype.say = function () {
+            console.log(this.age)
+        }
+        var p = new Person()
+        console.log(p)
+
+        function Student() {
+            // 继承属性
+        //   Person.call(Student)
+          Person.call(this)
+        //   this 指向 new之后的对象
+        }
+        // 继承方法
+        
+        Student.prototype = Object.create(Person.prototype)
+
+        // 修正 constructor
+        Student.prototype.constructor = Student
+        var s = new Student()
+        console.log(s)
+
+
+        // this
+        function addProps() {
+           this.abcd = 40
+        //    this === obj
+        //    obj.abcd = 40
+        }
+        let aaa = new addProps()
+        let bbb = new addProps()
+        console.log(aaa)
+        var obj = {}
+        addProps.call(obj)
+        console.log(obj)
+    </script>
+</body>
+
+</html>
