@@ -9,7 +9,7 @@ import axios from 'axios'
 import  'amfe-flexible'
 
 // use 将（）挂载到Vue的原型链上 this.$()
-Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel)
+Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader)
 
 Vue.prototype.$http = axios
 // this 获取
