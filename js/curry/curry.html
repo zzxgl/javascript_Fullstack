@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+    function sum(a,b,c) {
+      return a + b + c
+    }
+    const add30 = sum.bind(null,10,20)
+    console.log(add30(30))
+    // bind  分为两次
+    //  curry 0 ~ 方法名.lengh(参数个数) 参数分批传
+
+    // CDN 引入的
+    // 对sum进行curry化
+    const sumCurried = _.curry(sum)
+    const add10 = sumCurried(10)
+    const add31 = add10(20)
+    const sumRes = add31(30)
+    // 如果函数参数的数量 === 已经接收到的参数数量 则执行函数内部的代码
+    // 否则的话返回一个函数，继续接受参数
+    console.log(sumRes)
+    
+    console.log(sumCurried(30)(40)(50))
+  </script>
+</body>
+</html>
