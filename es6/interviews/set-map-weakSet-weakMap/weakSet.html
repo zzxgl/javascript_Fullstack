@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    // const ws = new WeakSet()
+   // ws.add({a:1})
+
+// 参数为数组时
+//    const a = [[1,2],[3,4]]
+//    const ws = new WeakSet(a)
+//    console.log(ws)  // 数组和类数组也可以作为参数传入  该数组的成员都会成为weakSet实例的成员
+//    const b = [5,6]
+//    const wn = new WeakSet(b)
+//    console.log(wn)   // 但是，传进来的数组的成员只能是对象
+  
+    const ws = new WeakSet()
+    const obj =　{}
+    const foo = {}
+    // ws.add(window)  //node环境下没有window
+    ws.add(obj)
+    ws.add(foo)
+    // ws.delete(obj)
+    // console.log(ws.size) //undefined  所以不能遍历
+    console.log(ws)
+    const foos = new WeakSet()
+    // foos（弱引用）对实例的引用不会被记入到内存回收机制当中 所以删除实例的时候不用考虑foos 也不会出现内存泄漏
+    class Foo {
+      constructor() {
+        foos.add(this) //将构造函数的this作用域添加给foos
+      }
+      method () {
+        if(!foos.has(this)) {
+          throw  new TypeError('error')
+        }
+      }
+       //   保证Foo的实例方法只能在Foo的实例上调用
+    }
+    let faa = new Foo()
+  </script>  
+</body>
+</html>

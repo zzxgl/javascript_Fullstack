@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <div id="myDiv">
+    111111
+   </div>
+  <script>
+    const data = {}
+    const element = document.getElementById('myDiv')
+    data[element] = 'wnwnwnwn'
+    console.log(data['[object HTMLDivElement]']) //wnwnwnwn
+
+
+//     const m = new Map()
+//     const o = {p:'hello world'}
+//     m.set(o,'content')  // set 存
+//     console.log(m.get(o)) // get 取
+//     m.delete(o)  //删除m中的o
+//     console.log(m.has(o)) 
+//     console.log(m)
+
+//     const items = new Map([
+//       ['name','蜗牛'],
+//       ['sex','boy']
+//   ]) 
+//     console.log(items)
+//     console.log(items.size)
+//     console.log(items.has('name'))
+//     console.log(items.get('name'))
+     // const items = [
+    //   ['name','蜗牛'],
+    //   ['sex','boy']
+    // ]
+    // const map = new Map()
+    // items.forEach(([key,value]) => {
+    //   map.set(key,value)  
+    // })
+    // console.log(map)
+    // console.log(map.size)
+    // console.log(map.has('name'))
+    // console.log(map.get('name'))
+
+
+    // 实际上不仅仅是(数组内部成员是二维数组)双元素数组，任何具有Iterator接口，都可以作为Map的参数 所以Set和Map都可以用来生成新的Map
+    // const set = new Set([
+    //   ['foo',1],
+    //   ['bar',2]
+    // ])
+    // const m1 = new Map(set)
+    // console.log(m1)
+    // console.log(m1.get('foo'))
+    // const m2 = new Map([['baz',3]])
+    // console.log(m2)
+    // const m3 = new Map(m2)  //m2已经不是object是map格式的数据结构
+    // console.log(m3)
+    
+    // const map = new Map()
+    // map.set(1,'aaa').set(1,'bbb')
+    // console.log(map.get(2))  //undefined
+
+
+    // 对不同对象的引用相同的值，在map结构中视为两个建
+    // const k1 = ['a']
+    // const k2 = ['a']
+    // map.set(k1,111)
+    // map.set(k2,222)
+    // console.log(map)
+
+    // let map = new Map()
+    // map.set(-0,123)
+    // console.log(map.get(+0)) //123
+
+    // let map = new Map()
+    // map.set(true,1)
+    // map.set("true",2)
+    // // 布尔值和字符串的值不一样
+    // console.log(map.get(true)) //1
+
+    // let map = new Map()
+    // map.set(11,1)
+    // map.set("11",2)
+    // // number和字符串的值不一样
+    // console.log(map.get("11")) //1
+
+    // let map = new Map()
+    // map.set(null,33)
+    // map.set(undefined,444)
+    // console.log(map.get(null))
+    
+    let map = new Map()
+    map.set(NaN,55)
+    console.log(map.get(NaN))
+  </script>  
+</body>
+</html>
