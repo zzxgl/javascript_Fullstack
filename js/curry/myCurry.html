@@ -19,11 +19,15 @@
         if ( args.length  >= len) {
           return func(...args)
         }
+        // 分批传入参数
         return function(...params) {
         let _args = [...args,...params]
+        // 当传入参数的长度大等于或大于len时
         if ( _args.length  >= len) {
+            //将参数传递给func 调用func函数
           return func(...args)
         } else {
+            // 否则再调用自己本身
           return _curry(...args)
         }
       }
