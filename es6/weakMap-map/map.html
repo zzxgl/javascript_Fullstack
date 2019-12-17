@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    // 斐波那契数列 1 1 2 3 5 8 
+    // 求斐波那契数列里第n个值
+
+    // 递归  优化环节（缓存）
+    let map = new Map()
+    function fb(n) {
+      if (n === 1 || n === 2) {
+        return 1;
+      }
+      if(map.get(n)) return map.get(n)
+      let res = fb( n - 1) + fb( n - 2)
+    //   在map里面添加键值对
+      map.set(n,res)
+      return res 
+    }
+    // 打印调用fb之前的时间戳
+    console.time('fb')
+    let res = fb(35)
+    console.timeEnd('fb')
+    // 打印调用完fb的时间戳
+    // fb(34) + fb(33)
+    //  fb(33) fb(32) + fb(32) + fb(31)
+    console.log(res)
+  </script> 
+</body>
+</html>
