@@ -4,10 +4,17 @@
   -  WeakSet 没有size属性
   -  WeakSet也不能被遍历 Set可以使用foreach 或者将Set转化为数组使用map和filter进行遍历
 #### Map  
-  -  key可以为任意类型   Object的key只能是字符串是唯一的
+  -   key可以为任意类型   Object的key只能是字符串是唯一的
   -  .set()是map的一个方法 用来设置或修改实例当中的值
   -  .get()通过键名 获取value值
   -  .has() 判断是否在map对象中
   -  .size 获取map对象的长度
   -  不仅仅是双元素数组，任何具有Iterator接口，都可以作为Map的参数
   -  对不同对象的引用相同的值，在map结构中视为两个键
+  -  遍历时map数据结构遍历的顺序一定会按照数据本身的顺序进行
+#### WeakMap与Map的区别
+  - WeakMap只接受对象(null除外)做键名，不接受其他类型的值作为键名
+  - WeakMap弱引用只是键名，不是键值
+  - 没有.size方法
+  - 不能遍历
+  - 没有clear()方法

@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
+
 <body>
-   <div id="myDiv">
+  <div id="myDiv">
     111111
-   </div>
+  </div>
   <script>
-    const data = {}
-    const element = document.getElementById('myDiv')
-    data[element] = 'wnwnwnwn'
-    console.log(data['[object HTMLDivElement]']) //wnwnwnwn
+    // const data = {}
+    // const element = document.getElementById('myDiv')
+    // data[element] = 'wnwnwnwn'
+    // console.log(data['[object HTMLDivElement]']) //wnwnwnwn
 
 
-//     const m = new Map()
-//     const o = {p:'hello world'}
-//     m.set(o,'content')  // set 存
-//     console.log(m.get(o)) // get 取
-//     m.delete(o)  //删除m中的o
-//     console.log(m.has(o)) 
-//     console.log(m)
+    //     const m = new Map()
+    //     const o = {p:'hello world'}
+    //     m.set(o,'content')  // set 存
+    //     console.log(m.get(o)) // get 取
+    //     m.delete(o)  //删除m中的o
+    //     console.log(m.has(o)) 
+    //     console.log(m)
 
-//     const items = new Map([
-//       ['name','蜗牛'],
-//       ['sex','boy']
-//   ]) 
-//     console.log(items)
-//     console.log(items.size)
-//     console.log(items.has('name'))
-//     console.log(items.get('name'))
-     // const items = [
+    //     const items = new Map([
+    //       ['name','蜗牛'],
+    //       ['sex','boy']
+    //   ]) 
+    //     console.log(items)
+    //     console.log(items.size)
+    //     console.log(items.has('name'))
+    //     console.log(items.get('name'))
+    // const items = [
     //   ['name','蜗牛'],
     //   ['sex','boy']
     // ]
@@ -59,13 +61,13 @@
     // console.log(m2)
     // const m3 = new Map(m2)  //m2已经不是object是map格式的数据结构
     // console.log(m3)
-    
+
     // const map = new Map()
     // map.set(1,'aaa').set(1,'bbb')
     // console.log(map.get(2))  //undefined
 
 
-    // 对不同对象的引用相同的值，在map结构中视为两个建
+    // 对不同对象的引用相同的值，在map结构中视为两个键
     // const k1 = ['a']
     // const k2 = ['a']
     // map.set(k1,111)
@@ -92,10 +94,113 @@
     // map.set(null,33)
     // map.set(undefined,444)
     // console.log(map.get(null))
-    
-    let map = new Map()
-    map.set(NaN,55)
-    console.log(map.get(NaN))
-  </script>  
+
+    // let map = new Map()
+    // map.set(NaN,55)
+    // console.log(map.get(NaN)) //55
+
+
+
+    // 实例属性和操作方法
+    // const map = new Map()
+    // map.set('foo',true)
+    // map.set('bar',false)
+    // console.log(map.size) //2 map对象的长度
+
+    // a = {
+    //   name:'qq',
+    //   name:'aa'
+    // }
+    // console.log(a) //  {name:'aa'}  key值是唯一的
+
+    // const map = new Map()
+    // map.set('abc',123).set(22,'abc').set(undefined,NaN)
+    // console.log(map.get(22)) //abc
+    // console.log(map.has(undefined))  // false通过key值判断
+    // console.log(map.get(123)) // undefined 通过key获取值
+    // // map.delete(22)
+    // map.clear()  //清空map对象 {}
+    // console.log(map)
+
+
+    // 遍历  map数据结构遍历的顺序一定会按照数据本身的顺序进行
+    // const map = new Map([
+    //   ['foo','no'],
+    //   ['bar','yes']
+    // ])
+    // console.log(map)
+    // console.log(map.keys())
+    // for(let key of map.keys()) {
+    //   console.log(key)
+    // }
+    // for(let val of map.values()) {
+    //   console.log(val)
+    // }
+    // for(let item of map.entries()) {
+    //   console.log(item[0],item[1])
+    // }
+    // for(let [key,value] of map.entries()) {
+    //   console.log(key,value)
+    // }
+    // for(let item of map) {
+    //   console.log(item)
+    // }
+    // console.log(Map.prototype[Symbol.iterator] === Map.prototype.entries)  //与Set的不同  .value
+
+    // 将map转为数组
+    // const map = new Map([
+    //   [1,'one'],
+    //   [2,'two'],
+    //   [3,'three']
+    // ])
+    // console.log([...map.keys()])
+    // console.log([...map.values()])
+    // console.log(...map.entries())
+    // console.log([...map])
+    // object 不能用foreach遍历 map对象具有迭代器
+    // foreach第一个参数是value值
+    // map.forEach((value,key,map) => {
+    //   console.log(key,value,map)
+    // })
+    // map() 第二个参数的是数组的下标
+    //  Array.from(map).map((item,index)=>{
+    //     console.log(item,index)
+    //     console.log(item)
+    //   })
+    //   console.log(map)
+    // const map = new Map()
+    // map.set(1,'a').set(2,'b').set(3,'c')
+    // Array.from(map).filter(([k,v]) => {
+    //   console.log(k<=3 ? k:'')
+    // })
+
+    // 将map转化为对象
+    // function setMaptoObject(map) {
+    //   let obj = Object.create(null) //创建一个空对象 {} 区别原型链继承
+    //   for (let [k, v] of map) {
+    //     obj[k] = v
+    //   }
+    //   return obj
+    // }
+    // const map = new Map()
+    // map.set(1, 'a').set(2, 'b').set(3, 'c')
+    // console.log(setMaptoObject(map))
+
+    // 对象转map
+    function setObjectToMap(obj){
+      let map = new Map()
+      for(let item of Object.keys(obj)) {
+        console.log(item)
+        map.set(item, obj[item])
+      }
+      return map
+    }
+    let myObj = {
+      "yes": true,
+      "false": false
+    }
+    console.log(setObjectToMap(myObj))
+  </script>
 </body>
+
 </html>

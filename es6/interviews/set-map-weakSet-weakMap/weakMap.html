@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    // const wm = new WeakMap()
+    // const key = {foo:1}
+    // wm.set(key,2)
+    // console.log(wm)
+    // console.log(wm.get(key)) //2
+    // const k1 = [1,2,3]
+    // const k2 = [1,2,3]
+    // const wm2 = new WeakMap([
+    //   [k1,'foo'],
+    //   [k2,'bar']
+    // ])
+    // console.log(wm2.get(k1))
+
+    // 只接受对象（null除外）做键名
+    // const map = new WeakMap()
+    // map.set(null,2)  
+    // console.log(map.get(null))
+
+
+// 不用手动解除引用，弱引用使用完会被垃圾回收机制默认回收 
+    // const e1 = document.getElementById('foo')
+    // const e2 = document.getElementById('bar')
+    // const arr = [
+    //   [e1,'foo元素'],
+    //   [e2,'bar元素']
+    // ]
+    // // 当不需要使用e1e2时，必须手动将e1和e2
+    // arr[0] = null 
+    // arr[1] = null
+    // // -------------------------------------------
+    // const wm = new WeakMap()
+    // const element = document.getElementById('test')
+    // wm.set(element,'some information')
+    // console.log(wm.get(element))
+    
+    // WeakMap 弱引用的只是键名，不是值
+    // const wm = new WeakMap()
+    // let key = {}
+    // let obj = {foo:1}
+    // wm.set(key,obj)
+    // obj = null
+    // console.log(wm.get(key))
+    // const wm = new WeakMap()
+    // console.log(wm.size)  //undefined
+
+    let myElement = document.getElementById('logo')
+    let myWeakmap = new WeakMap()
+    myWeakmap.set(myElement,{timeClicked: 0})
+    myElement.addEventListener('click', function() {
+      let logoData = myWeakmap.get(myElement)
+      logoData.timeClicked++
+    })
+  </script>
+</body>
+</html>
