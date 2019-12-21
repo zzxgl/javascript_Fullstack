@@ -21,4 +21,18 @@
   ## npm i postcss-loader autoprefixer --save-dev 给css添加前缀 autoprefixer进行浏览器的部分兼容补全
 
   ## 抽取样式 将css单独打包 npm i mini-css-extract-plugin --save-dev
-  
+ 
+  ### 压缩打包   去空格
+    - 压缩css (optimize-css-assets-webpack-plugin)
+    - 压缩js (uglifyjs-webpack-plugin)
+  ### 为css js文件添加hash值，防止缓存 .[hash]
+    每次文件内容修改 生成不一样的文件 解决修改内容依旧读取缓存未修改版本文件的问题
+
+  ### html-webpack-plugin  打包html文件
+
+  ### 清理目录 
+    - clean-webpack-plugin 在打包之前把dist目录清空
+
+  ### webpack图片处理和优化
+    - file-loader
+    - image-webpack-loader
