@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let mapAdd = new Map()
+    function add(a) {
+      // 下一次再调用时，先判断 mapAdd 里面有没有
+      if (mapAdd.has(a)) {
+        return mapAdd.get(a)
+      }
+      let res = a + 30; //加入缓存功能
+      mapAdd.set(a, res)
+      return res
+      // return a + 30;
+    }
+
+    let mapReduce = new Map()
+    function reduce(c, d) {
+      let key = JSON.stringify(Array.from(arguments))//将参数转换为字符串
+      if (mapReduce.has(key)) {
+        return mapReduce.get(key)
+      }
+      let res = c - d
+      mapReduce.set(ket, res)
+      return res
+      // return c - d
+    }
+
+    // add 和 reduce 函数 相同的都是过程 ， 不同的是干的活不一样（函数干活）
+
+    function sum(a, b, c) {
+      return a + b + c
+    }
+
+
+    function memorize(fn) {  //接收fn
+      let cache = new Map()
+      // fn => memorize  
+      return (...args) => {  // 具有缓存功能的sum 接收fn的函数  不确定函数传入的参数个数 
+        let key = JSON.stringify(args)
+        if (cache.has(key)) {
+          console.log('from cache')
+          return cache.get(key)
+        }
+        let res = fn(...args)  //传入参数的函数进行自己的运算 sum进行参数求
+        cache.set(key, res)
+        return res
+      }
+    }
+
+    const mSum = memorize(sum)
+    console.log(mSum(1, 2, 3))//进行计算
+    console.log(mSum(1, 2, 3)) //不用计算
+    console.log(mSum(1,2,undefined))  //NaN  (1,2,null)  JSON.stringify()
+    console.log(mSum(1,2,null))  // NaN  (1,2,null)
+    // 过程抽象  相同的过程和逻辑 放在一个函数当中处理
+    // 体现在：构建高阶函数(输入是函数输出也是函数)
+  </script>
+</body>
+
+</html>
