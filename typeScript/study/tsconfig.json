@@ -1,0 +1,28 @@
+{
+  "compilerOptions": { //编译选项 参数配置
+    "target": "ES5",  //指定js版本为ES5 支持ES5的语法
+    "module": "commonjs",  //遵从commonjs规范
+    "moduleResolution": "node", // 选择模块解析策略
+    "experimentalDecorators": true, // 开启ts装饰器
+    "allowSyntheticDefaultImports": true, //允许从没有默认导出的模块当中 默认导入  import export
+    "sourceMap": true, //编译代码时会创建一个Map文件 显示不同的源文件  方便调试
+    "strict": true, //严格模式
+    "noImplicitAny": true, //不允许默认的Any类型
+    "alwaysStrict": true, //'use strict ' 编译每个源文件生成'use strict'语句
+    "declaration": true, //生成对应的 .d.ts文件  （声明文件）
+    "removeComments": true, //删除编译后的所有注释 减小代码体积    webpack
+    "noImplicitReturns": true, //不是函数的所有返回路径都有返回值时报错
+    "importHelpers": true, //ts辅助工具
+    "lib": ["es6","dom"], //指定要包含在编译中的库文件
+    "typeRoots": ["node_modules/@types"], //不写默认也在 编译时要用到的声明文件 统一去node_modules/@types下面找
+    "outDir": "./dist", //出口文件  ts编译后的文件
+    "rootDir": "./src", //入口文件
+  },
+  "include": [  //指定要编译的文件
+    "./src/**/*.ts"   // src文件夹下面的所有ts文件进行编译
+  ],
+  "exclude": [  // 指定不需要编辑的文件
+    "node_modules",
+    "dist"
+  ]
+}
