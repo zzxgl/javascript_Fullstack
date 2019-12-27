@@ -1,0 +1,10 @@
+declare const decLiteral: number;
+declare const hexLiteral: number;
+declare const book: string;
+declare function use(): void;
+declare const a: void;
+declare const b: null;
+declare let u: undefined;
+declare let n: null;
+declare const syml: unique symbol;
+declare const sym2: unique symbol;
