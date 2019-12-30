@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = [1,2,3,4,5]
+    //  劫持 
+    // 1.push shift unshift pop..
+    // 2.数组的索引  没有检测到  不会监测
+    arr.push(6)
+    arr[6] =6  //不会
+    console.log(arr)
+    // 先存一下以前的push　保证之前的功能依旧能用
+    let originalPush = Array.prototype.push
+    // 数组调用 push的时候 走这里的代码 拦截
+    Array.prototype.push = function (...args) {
+      console.log('我晓得数组改变了')
+    //   push 恢复
+    //   originalPush()
+      originalPush.apply(this,args)  //往数组里面添加7
+    }
+    arr.push(7)
+    console.log(arr)
+  </script>  
+</body>
+</html>

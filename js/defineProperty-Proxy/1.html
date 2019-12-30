@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <p>{{ name }}</p>
+  <script>
+    let data = {
+      name:123
+    }
+    this.name = 456  //赋值
+    // 模板 要知道 name什么时候被改了
+    data.age = 18
+    // 第三个参数：数据描述符 value指定属性的值 
+    Object.defineProperty(data,'sex',{
+      enumerable:true,  // 是否可枚举
+      writable:false,  //属性是否可以被修改
+      value: '男'
+    })
+    data.sex =  '女' 
+    // get,set 
+    let data1 = {
+      name1:'张张',
+      _age1:undefined,
+      get age1() {
+        return '21'
+      },
+      set age1(val) {
+        this._age1 = val
+      }
+    }
+    console.log(data1.age1)
+
+
+    Object.defineProperty(data,'name1',{
+      get: function () {
+        return data._name1
+      },
+      set: function (newVal) {
+        console.log('我晓得数据发生改变，重新渲染')
+        data._name1 = newVal
+      }
+    })
+    data.name1 = '蜘蛛侠'
+    for(let key in data) {
+      console.log(key,data[key])
+    }
+
+    let data3 = {
+      list:[1,2,3,4]
+    }
+    data3.list.push(5)
+    console.log(data3)
+  </script>  
+</body>
+</html>
