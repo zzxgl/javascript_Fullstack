@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function pageChange() {
+      console.log(location.href, '记录+1')  //location 地址栏 href可设置或返回当前显示的文档的完整 URL。
+    }
+    window.addEventListener('hashchange', pageChange)  //监控#后面的变化
+
+    //historyrouter
+    window.addEventListener('popstate', pageChange)  //监控前进后退按钮 forword back go(1) go(-1)  push back
+    // pushState / replaceState popstate检测不到
+
+    let hooks = ['pushState', 'replaceState']
+    hooks.forEach(hook => {
+      let method = window.history.hook
+      window.history.hook = function (...args) {
+        setTimeout(() => {
+          pageChange()
+        }, 0)
+        return method.call(window.history, args)
+      }
+    })
+
+    // import './router.html'
+  </script>
+</body>
+
+</html>
