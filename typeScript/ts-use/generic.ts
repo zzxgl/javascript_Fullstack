@@ -49,7 +49,7 @@ const a = {
   name:"wn",
   id:1
 }
-getVal(a,'id') 
+getVal(a,'id')
 
 
 // 使用多重类型进行泛型约束
@@ -62,13 +62,13 @@ interface SecondInterface {
 interface childInterface extends FirstInterface, SecondInterface {
 
 }
-class Demo<T extends childInterface> {
-  private genericProperty:T
-  useT () {
-    this.genericProperty.doSomethig()
-    this.genericProperty.doSomethingElse()
-  }
-}
+// class Demo<T extends childInterface> {
+// //   private genericProperty:T
+//   useT () {
+//     this.genericProperty.doSomethig()
+//     this.genericProperty.doSomethingElse()
+//   }
+// }
 
 // 泛型与new
 function factory<T>(type:{new():T}):T {
