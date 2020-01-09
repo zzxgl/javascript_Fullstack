@@ -13,8 +13,8 @@ class App extends React.Component {
     let c = {userName,comment}
     // 不可变数据 
     // let obj = {};let obj1 = obj;obj1.name = 'li'   //可变  obj1的变化会影响obj的变化
-    // let obj1 = Objct.assign({},obj) //浅拷贝 
-    let list = this.state.commentList      //浅拷贝一份
+    // let obj1 = Objct.assign({},obj) //深拷贝 
+    let list = this.state.commentList.slice(0)      //深拷贝一份
     list.push(c)
     this.setState({
       commentList:list
@@ -25,7 +25,7 @@ class App extends React.Component {
     //  del i i为要删除那项的索引
     // 将 data-i 取出来
     const i = parseInt(event.target.dataset.i)
-    const list = this.state.commentList.slice(0) //浅拷贝
+    const list = this.state.commentList.slice(0) //深拷贝
     list.splice(i,1)
     this.setState({  //数据变化了 调用 setState 更新页面数据
       commentList:list
